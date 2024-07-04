@@ -1,22 +1,39 @@
 var sortColors = function(nums) {
 
-    let l = 0
+    let zeros=0;
+    let ones=0;
+    let twos=nums.length-1
     let temp;
-    let r = nums.length-1
 
-    for(let i=0; i<r;)
+    while(ones<=twos)
     {
-        if(nums[i]==2)
+        
+        if(nums[ones] == 0)
         {
-            temp = nums[i];
-            nums[i] = nums[r];
-            nums[r] = temp;
-            r--;
-            i++;
-            console.log(nums);
-            console.log(r);
+            temp = nums[ones];
+            nums[ones] = nums[zeros];
+            nums[zeros] = temp;
+            zeros++;
+            ones++;
+
         }
+
+        else if(nums[ones] == 2)
+        {
+            temp = nums[ones];
+            nums[ones] = nums[twos];
+            nums[twos] = temp;
+            twos--;
+        }
+
+        else
+        {
+            ones++;
+        }
+        
+
     }
 
+    console.log(nums)
 };
-sortColors([2,0,2,1,1,0])
+sortColors([1,2,0])
